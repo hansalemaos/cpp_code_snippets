@@ -2,7 +2,7 @@
 #include <string>
 #include <string_view>
 
-static void constexpr remove_charset_from_string(std::string &s, const std::string_view &chars)
+static void constexpr remove_charset_from_string(std::string &s, const std::string_view chars)
 {
     if (chars.empty() || s.empty())
     {
