@@ -68,7 +68,7 @@ static constexpr void rstrip_from_string_view(std::string_view &s, const std::st
     }
 }
 
-static bool is_float_number(std::string_view s, bool strip_spaces = true)
+bool is_float_number(std::string_view s, bool strip_spaces = true)
 {
 
     if (s.size() == 0)

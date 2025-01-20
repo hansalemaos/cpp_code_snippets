@@ -85,7 +85,7 @@ static constexpr std::array<std::pair<std::string_view, std::string_view>, 63> a
 static constexpr std::string_view all_accents_as_string{
     "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ"};
 
-static void constexpr remove_accents_from_string(std::string &s, bool do_precheck = true, int count = MAX_32BIT_INT)
+void constexpr remove_accents_from_string(std::string &s, bool do_precheck = true, int count = MAX_32BIT_INT)
 {
     if (s.empty())
     {

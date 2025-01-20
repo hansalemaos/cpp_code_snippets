@@ -7,7 +7,7 @@
 #include <tuple>
 #include <vector>
 
-template <typename T> static auto calculate_rectangle_data(const std::array<T, 4> &bounds_array)
+template <typename T> auto calculate_rectangle_data(const std::array<T, 4> &bounds_array)
 {
     auto start_x = bounds_array[0];
     auto start_y = bounds_array[1];

@@ -6,7 +6,7 @@
 #include <string_view>
 #include <vector>
 
-static constexpr size_t find_first_that_is_not_space(const std::string_view st)
+constexpr size_t find_first_that_is_not_space(const std::string_view st)
 {
     if (st.empty())
     {

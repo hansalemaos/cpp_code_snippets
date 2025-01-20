@@ -12,7 +12,7 @@
 #define CLOSE_CMD(pipe) pclose(pipe)
 #endif
 
-static std::string execute_cmd_get_stdout(std::string &cmd2execute, size_t approx_size)
+std::string execute_cmd_get_stdout(std::string &cmd2execute, size_t approx_size)
 {
     static constexpr size_t buffersize{32};
     char buffer[buffersize]{};

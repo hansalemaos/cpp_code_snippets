@@ -61,8 +61,8 @@ static int constexpr find(const std::string_view str, const std::string_view sub
     return (int)result;
 }
 
-static std::string replace_string_with_another(const std::string_view str, const std::string_view oldstr,
-                                               const std::string_view newstr, int count)
+std::string replace_string_with_another(const std::string_view str, const std::string_view oldstr,
+                                        const std::string_view newstr, int count)
 {
     int sofar{};
     int cursor{};

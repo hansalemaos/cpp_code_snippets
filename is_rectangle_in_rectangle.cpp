@@ -6,7 +6,7 @@
 #include <string_view>
 #include <vector>
 
-bool static constexpr is_rect_in_rect(const std::array<int64_t, 4> &rect1, const std::array<int64_t, 4> &rect2)
+bool constexpr is_rect_in_rect(const std::array<int64_t, 4> &rect1, const std::array<int64_t, 4> &rect2)
 {
 
     return (rect1[0] >= rect2[0] && rect1[1] >= rect2[1] && rect1[2] <= rect2[2] && rect1[3] <= rect2[3]);

@@ -2,7 +2,7 @@
 #include <string>
 #include <string_view>
 
-static void constexpr replace_charset_with_char(std::string &s, const std::string_view chars, char c = ' ')
+void constexpr replace_charset_with_char(std::string &s, const std::string_view chars, char c = ' ')
 {
     if (chars.empty() || s.empty())
     {

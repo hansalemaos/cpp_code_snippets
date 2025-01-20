@@ -6,7 +6,7 @@
 #include <string_view>
 #include <vector>
 
-static bool constexpr compare2strings(const std::string_view s1, const std::string_view s2)
+bool constexpr compare2strings(const std::string_view s1, const std::string_view s2)
 {
     if (s1.size() != s2.size())
     {

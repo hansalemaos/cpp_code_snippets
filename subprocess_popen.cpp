@@ -11,17 +11,17 @@
 #include <cstdio>
 #include <string>
 
-static FILE *subprocess_popen(const std::string &cmd)
+FILE *subprocess_popen(const std::string &cmd)
 {
 
     return EXEC_CMD(cmd.c_str(), "r");
 }
-static FILE *subprocess_popen(const std::string_view cmd)
+FILE *subprocess_popen(const std::string_view cmd)
 {
     std::string tmp{cmd};
     return EXEC_CMD(tmp.c_str(), "r");
 }
-static FILE *subprocess_popen(const char *cmd)
+FILE *subprocess_popen(const char *cmd)
 {
 
     return EXEC_CMD(cmd, "r");

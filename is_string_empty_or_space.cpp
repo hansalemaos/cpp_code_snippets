@@ -5,7 +5,7 @@
 #include <string_view>
 #include <vector>
 
-static bool constexpr isspace_or_empty(const std::string_view str)
+bool constexpr isspace_or_empty(const std::string_view str)
 {
     if (str.size() == 0)
     {

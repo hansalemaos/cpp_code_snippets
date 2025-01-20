@@ -8,7 +8,7 @@
 #include <string>
 #include <string_view>
 
-template <typename T> static constexpr T pi_const()
+template <typename T> constexpr T pi_const()
 {
     return (T)(3.14159265358979323846);
 }
