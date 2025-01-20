@@ -5,8 +5,8 @@
 #include <string_view>
 #include <type_traits>
 
-static constexpr char chars_integer_numbers[] = "0123456789";
 static constexpr std::string_view chars_spaces = " \t\n\r\f\v";
+static constexpr std::string_view chars_float_numbers_string_view = "0123456789.";
 
 static constexpr void lstrip_from_string_view(std::string_view &s, const std::string_view &strip_chars)
 {
@@ -68,8 +68,9 @@ static constexpr void rstrip_from_string_view(std::string_view &s, const std::st
     }
 }
 
-static bool is_int_number(std::string_view s, bool strip_spaces = true)
+static bool is_float_number(std::string_view s, bool strip_spaces = true)
 {
+
     if (s.size() == 0)
     {
         return false;
@@ -83,18 +84,26 @@ static bool is_int_number(std::string_view s, bool strip_spaces = true)
             return false;
         };
     }
-
     if ((s.size() > 1) && ((s[0] == '-') || (s[0] == '+')) && ((s[1] != '-') && (s[1] != '+')))
     {
-        return is_int_number(s.substr(1, s.size() - 1));
+        return is_float_number(s.substr(1, s.size() - 1));
     }
+    size_t dotcounter = 0;
     for (const char &i : s)
     {
         bool isnumber = false;
-        for (const char &j : chars_integer_numbers)
+        for (const char &j : chars_float_numbers_string_view)
         {
             if (i == j)
             {
+                if (i == '.')
+                {
+                    dotcounter += 1;
+                    if (dotcounter > 1)
+                    {
+                        return false;
+                    }
+                }
                 isnumber = true;
                 break;
             }
@@ -109,23 +118,16 @@ static bool is_int_number(std::string_view s, bool strip_spaces = true)
 
 int main()
 {
-    std::string mystring = "\n   \tdddd\t sss   \t\nqq\t            ";
-    std::string_view mystring_view{mystring};
 
-    lstrip_from_string_view(mystring_view, " \t\n\r\f\v");
-    rstrip_from_string_view(mystring_view, " \t\n\r\f\v");
+    std::string intno1{"1111223.33"};
+    std::string intno2{"  1111223.44"};
+    std::string intno3{"  1111223.111  "};
+    std::string NOTintno{"  1x1x1x1x2.11x23  "};
 
-    std::string intno1{"1111223"};
-    std::string intno2{"  1111223"};
-    std::string intno3{"  1111223  "};
-    std::string NOTintno{"  1x1x1x1x2x23  "};
-
-    std::cout << "is_int_number(intno1) = " << is_int_number(intno1) << std::endl;
-    std::cout << "is_int_number(intno2) = " << is_int_number(intno2) << std::endl;
-    std::cout << "is_int_number(intno3) = " << is_int_number(intno3) << std::endl;
-    std::cout << "is_int_number(NOTintno) = " << is_int_number(NOTintno) << std::endl;
-
-    std::cout << "mystring_view = " << mystring_view << std::endl;
+    std::cout << "is_int_number(intno1) = " << is_float_number(intno1) << std::endl;
+    std::cout << "is_int_number(intno2) = " << is_float_number(intno2) << std::endl;
+    std::cout << "is_int_number(intno3) = " << is_float_number(intno3) << std::endl;
+    std::cout << "is_int_number(NOTintno) = " << is_float_number(NOTintno) << std::endl;
 
     return 0;
 }
