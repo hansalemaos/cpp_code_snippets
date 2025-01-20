@@ -38,7 +38,7 @@ static constexpr void lstrip_from_string_view(std::string_view &s, const std::st
     }
 }
 
-static void rstrip_from_string_view(std::string_view &s, const std::string_view &strip_chars)
+static constexpr void rstrip_from_string_view(std::string_view &s, const std::string_view &strip_chars)
 {
     if (s.size() == 0)
     {
