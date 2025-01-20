@@ -8,8 +8,7 @@
 #include <variant>
 #include <vector>
 
-static void constexpr replace_substring_with_char_inplace(std::string &haystack, const std::string_view needle,
-                                                          char c = ' ')
+void constexpr replace_substring_with_char_inplace(std::string &haystack, const std::string_view needle, char c = ' ')
 {
     std::vector<size_t> indices;
     size_t offset = 0;
