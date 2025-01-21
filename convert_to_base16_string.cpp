@@ -51,12 +51,31 @@ template <typename T> std::string convert_to_base16_string(T &var)
     }
     return cstring2hex;
 }
+std::vector<uint8_t> convert_base16_string_to_bytes(std::string &str)
+{
+    std::vector<uint8_t> cstring2hex;
+    cstring2hex.reserve((str.size() / 2) + 2);
+    uint8_t result{};
+    for (size_t i = 0; i < str.size(); i += 2)
+    {
+        std::string cstri = str.substr(i, 2);
+
+        std::from_chars(str.data() + i, str.data() + i + 2, result, 16);
+        cstring2hex.emplace_back(result);
+    }
+    return cstring2hex;
+}
 
 int main()
 {
     int myint{1234};
-    std::cout << convert_to_base16_string(myint) << std::endl;
+    std::string converted1{convert_to_base16_string(myint)};
     float myfloat{1234.44};
-    std::cout << convert_to_base16_string(myfloat) << std::endl;
+    std::string converted2{convert_to_base16_string(myfloat)};
+    std::vector<uint8_t> v1{convert_base16_string_to_bytes(converted1)};
+    std::vector<uint8_t> v2{convert_base16_string_to_bytes(converted2)};
+    std::cout << converted1 << " " << (*(int *)v1.data()) << std::endl;
+    std::cout << converted2 << " " << (*(float *)v2.data()) << std::endl;
+
     return 0;
 }
