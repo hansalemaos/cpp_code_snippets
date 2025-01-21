@@ -1,5 +1,5 @@
 #include <iostream>
-static constexpr auto costexprabs(auto x)
+constexpr auto costexprabs(auto x)
 {
     return x < 0 ? -x : x;
 }
