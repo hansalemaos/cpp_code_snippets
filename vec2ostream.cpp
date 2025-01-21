@@ -20,13 +20,18 @@ template <typename T> std::ostream &operator<<(std::ostream &os, const std::vect
         vcounter++;
         os << *it;
         os << ", ";
-        it++;
+
         if (vcounter == v.size() - 1)
         {
             break;
         }
+        it++;
     }
-    os << *it;
+    if (v.size() > 1)
+    {
+        it++;
+        os << *it;
+    }
     os << ']';
 
     return os;
@@ -52,17 +57,21 @@ template <typename T, typename U> std::ostream &operator<<(std::ostream &os, con
         os << ", ";
         os << it->second;
         os << "),";
-        it++;
         if (vcounter == v.size() - 1)
         {
             break;
         }
+        it++;
     }
-    os << '(';
-    os << it->first;
-    os << ", ";
-    os << it->second;
-    os << ")";
+    if (v.size() > 1)
+    {
+        it++;
+        os << '(';
+        os << it->first;
+        os << ", ";
+        os << it->second;
+        os << ")";
+    }
     os << ']';
 
     return os;
@@ -85,14 +94,52 @@ template <typename T> std::ostream &operator<<(std::ostream &os, const std::vect
         vcounter++;
         os << *it;
         os << ',';
-        it++;
 
         if (vcounter == v.size() - 1)
         {
             break;
         }
+        it++;
     }
-    os << *it;
+    if (v.size() > 1)
+    {
+        it++;
+        os << *it;
+    }
+    os << ']';
+
+    return os;
+}
+
+template <typename T> std::ostream &operator<<(std::ostream &os, const std::vector<std::vector<std::vector<T>>> &v)
+
+{
+    if (v.size() == 0)
+    {
+        os << "[]";
+        return os;
+    }
+    auto it{v.begin()};
+
+    os << '[';
+    size_t vcounter{0};
+    while (it != v.end())
+    {
+        vcounter++;
+        os << *it;
+        os << ',';
+
+        if (vcounter >= v.size() - 1)
+        {
+            break;
+        }
+        it++;
+    }
+    if (v.size() > 1)
+    {
+        it++;
+        os << *it;
+    }
     os << ']';
 
     return os;
@@ -106,9 +153,23 @@ int main()
     std::vector<std::pair<std::string, float>> vec3{{"a", 1.4}, {"b", 2}, {"c", 3.33}};
     std::vector<std::vector<std::pair<std::string, float>>> vec4{{{"a", 1.4}, {"b", 2}, {"c", 3.33}},
                                                                  {{"a", 1.4}, {"b", 2}, {"c", 3.33}}};
+    std::vector<std::vector<std::vector<std::pair<std::string, float>>>> vec5{
+        {{{"a", 1.4}, {"b", 2}, {"c", 3.33}}, {{"a", 1.4}, {"b", 2}, {"c", 3.33}}},
+        {{{"a", 1.4}, {"b", 2}, {"c", 3.33}}, {{"a", 1.4}, {"b", 2}, {"c", 3.33}}}
+
+    };
+    std::vector<std::vector<std::vector<std::vector<std::pair<std::string, float>>>>> vec6{
+        {{{{"a", 1.4}, {"b", 2}, {"c", 3.33}}, {{"a", 1.4}, {"b", 2}, {"c", 3.33}}},
+         {{{"a", 1.4}, {"b", 2}, {"c", 3.33}}, {{"a", 1.4}, {"b", 2}, {"c", 3.33}}}
+
+        }};
     std::cout << vec1 << std::endl;
     std::cout << vec2 << std::endl;
     std::cout << vec3 << std::endl;
     std::cout << vec4 << std::endl;
+
+    std::cout << vec5 << std::endl;
+    std::cout << vec6 << std::endl;
+
     return 0;
 }
