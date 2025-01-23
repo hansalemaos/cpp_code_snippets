@@ -4,7 +4,7 @@
 #include <string_view>
 #include <vector>
 
-static std::string join_strings(const std::string &str, const std::vector<std::string> &seq)
+std::string join_strings(const std::string &str, const std::vector<std::string> &seq)
 {
     std::vector<std::string>::size_type seqlen{seq.size()};
     std::vector<std::string>::size_type i;

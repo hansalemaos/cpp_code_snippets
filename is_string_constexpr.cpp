@@ -4,7 +4,7 @@
 #include <string_view>
 #include <vector>
 
-static constexpr bool isalnum(const std::string_view str)
+constexpr bool isalnum(const std::string_view str)
 {
     std::string::size_type len = str.size();
     std::string::size_type i;
@@ -28,7 +28,7 @@ static constexpr bool isalnum(const std::string_view str)
     return true;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-static constexpr bool isalpha(const std::string_view str)
+constexpr bool isalpha(const std::string_view str)
 {
     std::string::size_type len = str.size();
     std::string::size_type i;
@@ -50,7 +50,7 @@ static constexpr bool isalpha(const std::string_view str)
     return true;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-static constexpr bool isdigit(const std::string_view str)
+constexpr bool isdigit(const std::string_view str)
 {
     std::string::size_type len = str.size();
     std::string::size_type i;
@@ -72,7 +72,7 @@ static constexpr bool isdigit(const std::string_view str)
     return true;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-static constexpr bool islower(const std::string_view str)
+constexpr bool islower(const std::string_view str)
 {
     std::string::size_type len = str.size();
     std::string::size_type i;
@@ -94,7 +94,7 @@ static constexpr bool islower(const std::string_view str)
     return true;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-static constexpr bool isspace(const std::string_view str)
+constexpr bool isspace(const std::string_view str)
 {
     std::string::size_type len = str.size();
     std::string::size_type i;
@@ -116,7 +116,7 @@ static constexpr bool isspace(const std::string_view str)
     return true;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-static constexpr bool istitle(const std::string_view str)
+constexpr bool istitle(const std::string_view str)
 {
     std::string::size_type len = str.size();
     std::string::size_type i;
@@ -158,7 +158,7 @@ static constexpr bool istitle(const std::string_view str)
     return cased;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-static constexpr bool isupper(const std::string_view str)
+constexpr bool isupper(const std::string_view str)
 {
     std::string::size_type len = str.size();
     std::string::size_type i;

@@ -6,7 +6,7 @@
 #include <type_traits>
 #include <vector>
 
-static std::string generate_random_alphanumstring(size_t len)
+std::string generate_random_alphanumstring(size_t len)
 {
 
     std::string s2(len + 1, 0);
