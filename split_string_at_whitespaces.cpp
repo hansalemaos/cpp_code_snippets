@@ -4,9 +4,10 @@
 #include <string_view>
 #include <vector>
 
-std::vector<std::string> split_string_at_whitespace(const std::string_view str, int maxsplit)
+std::vector<std::string> split_string_at_whitespace(const std::string_view str, int maxsplit, int approx_size = 1024)
 {
     std::vector<std::string> result;
+    result.reserve(approx_size);
     std::string::size_type i;
     std::string::size_type j;
     std::string::size_type len = str.size();
