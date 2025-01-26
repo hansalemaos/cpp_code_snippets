@@ -63,6 +63,14 @@ static int constexpr find(const std::string_view str, const std::string_view sub
 
 void replace_string_with_another(std::string &s, std::string &oldstr, std::string &newstr, int count)
 {
+    if (oldstr.empty())
+    {
+        return;
+    }
+    if (oldstr.size() > s.size())
+    {
+        return;
+    }
     int sofar{};
     int cursor{};
     std::string::size_type oldlen{oldstr.size()};
